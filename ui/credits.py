@@ -23,7 +23,7 @@ class CreditsPanel(ToolPanel, bpy.types.Panel):
         row = col.row(align=True)
         row.scale_y = 1.0
         row.label(text=t('CreditsPanel.desc1') + globs.version_str + ')', 
-                 icon_value=Iconloader.preview_collections["custom_icons"]["cats1"].icon_id)
+                 icon_value=Iconloader.preview_collections["custom_icons"]["toaster1"].icon_id)
 
         formally_row = col.row(align=True)
         formally_row.scale_y = 0.85

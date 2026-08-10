@@ -2,7 +2,7 @@ schema_version = "1.0.0"
 
 # Toasters Blender Plugin Extension
 id = "toasters_blender_plugin"
-version = "5.2.8"
+version = "5.2.10"
 name = "Toasters Blender Plugin"
 tagline = "Import and optimize 3D models easily into VRChat"
 maintainer = "magictwin"

@@ -46,7 +46,7 @@ no_auto_ver_check_file = os.path.join(resources_dir, "no_auto_ver_check.txt")
 # Get package name, important for panel in user preferences
 package_name = ''
 for mod in addon_utils.modules():
-    if mod.bl_info['name'] == 'Cats Blender Plugin':
+    if mod.bl_info.get('name') in ['Toasters Blender Plugin', 'Cats Blender Plugin']:
         package_name = mod.__name__
 
 # Icons for UI
@@ -377,10 +377,10 @@ def check_for_update_background(check_on_startup=False):
 
 
 def check_for_update():
-    print('Checking for Cats update...')
+    print('Checking for Toasters update...')
 
     # Get all releases from Github
-    if not get_github_releases('teamneoneko'):
+    if not get_github_releases('magictwinsworld', 'Toasters-Blender-Plugin'):
         finish_update_checking(error=t('check_for_update.cantCheck'))
         return
 
@@ -401,7 +401,7 @@ def check_for_update():
     finish_update_checking()
 
 
-def get_github_releases(repo):
+def get_github_releases(owner='magictwinsworld', repo='Toasters-Blender-Plugin'):
     global version_list
     version_list = OrderedDict()
 
@@ -421,44 +421,37 @@ def get_github_releases(repo):
 
     try:
         ssl._create_default_https_context = ssl._create_unverified_context
-        with urllib.request.urlopen('https://git.disroot.org/api/v1/repos/Neoneko/Cats-Blender-Plugin/releases') as url:
-            data = json.loads(url.read().decode())
-    except urllib.error.URLError:
-        print('URL ERROR')
+        req = urllib.request.Request(
+            f'https://api.github.com/repos/{owner}/{repo}/releases',
+            headers={'User-Agent': 'Toasters-Blender-Plugin'}
+        )
+        with urllib.request.urlopen(req) as response:
+            data = json.loads(response.read().decode())
+    except Exception as e:
+        print('URL ERROR:', e)
         return False
-    if not data:
+    if not data or not isinstance(data, list):
         return False
-    
-    # Determine tag prefix based on Blender version
-    tag_prefix = ""
-    if bpy.app.version >= (5, 0) and bpy.app.version < (5, 1):
-        tag_prefix = "5.0."
 
     for version in data:
-        full_tag = version.get('tag_name')
-        
-        # If we have a tag prefix, skip versions that don't match
-        if tag_prefix and not full_tag.startswith(tag_prefix):
-            continue   
-            
-        version_tag = full_tag
-        
-        # Remove prefix if present
-        if tag_prefix and version_tag.startswith(tag_prefix):
-            version_tag = version_tag[len(tag_prefix):]
-        
-        # Normalize version_tag 
-        version_tag = version_tag.replace('-', '.')
+        full_tag = version.get('tag_name', '')
+        if not full_tag:
+            continue
+
+        version_tag = full_tag.replace('-', '.')
         if version_tag.startswith('v.'):
             version_tag = version_tag[2:]
         if version_tag.startswith('v'):
             version_tag = version_tag[1:]
-        
-        # Store full tag  
+
+        zip_url = version.get('zipball_url') or f'https://github.com/{owner}/{repo}/archive/refs/tags/{full_tag}.zip'
+        body = version.get('body') or ''
+        pub_at = version.get('published_at', '').split('T')[0] if version.get('published_at') else ''
+
         version_list[full_tag] = [
-            version['zipball_url'],
-            version['body'],
-            version['published_at'].split('T')[0]
+            zip_url,
+            body,
+            pub_at
         ]
 
     return True
@@ -544,9 +537,7 @@ def update_now(version=None, latest=False, dev=False):
         return
     if dev:
         print('UPDATE TO DEVELOPMENT')
-        # Dynamically construct dev branch URL based on major version
-        major_version = CATS_VERSION.split('.')[0]
-        update_link = f'https://git.disroot.org/Neoneko/Cats-Blender-Plugin/archive/blender-{major_version}x-dev.zip'
+        update_link = 'https://github.com/magictwinsworld/Toasters-Blender-Plugin/archive/refs/heads/main.zip'
     elif latest or not version:
         print('UPDATE TO ' + latest_version_str)
         update_link = version_list.get(latest_version_str)[0]
