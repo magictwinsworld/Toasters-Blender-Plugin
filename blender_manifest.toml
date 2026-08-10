@@ -1,16 +1,20 @@
 schema_version = "1.0.0"
 
-# Unoffical Cats Blender Plugin Extenstion
-id = "cats_blender_plugin"
-version = "5.0.2"
-name = "Unoffical Cats Blender Plugin"
-tagline = "A tool designed to shorten steps needed to import and optimize models into VRChat"
-maintainer = "Unoffical Cats Team <hello@yusarina.xyz>"
+# Toasters Blender Plugin Extension
+id = "toasters_blender_plugin"
+version = "5.2.8"
+name = "Toasters Blender Plugin"
+tagline = "Import and optimize 3D models easily into VRChat"
+maintainer = "magictwin"
 type = "add-on"
-permissions = ["files", "network"]
-website = "https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-"
-tags = ["3D View", "Modeling", "Mesh", "Object"]
+website = "https://github.com/magictwinsworld/Toasters-Blender-Plugin"
+tags = ["Modeling", "Rigging"]
 blender_version_min = "5.0.0"
 license = [
   "SPDX:MIT",
 ]
+
+[permissions]
+files = "Access files for importing and exporting model assets"
+network = "Access network for downloading translations and checking updates"
+

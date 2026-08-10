@@ -1,109 +1,57 @@
-# Cats Blender Plugin
+# Toasters Blender Plugin
 
-### The Neoneko version of Cats is no longer maintained, feel free to fork.
+### Maintained and updated by magictwin (Formally known as Cats Blender Plugin)
 
-### DO NOT ASK FOR HELP IN THE ORIGINAL CATS DISCORD SERVER, PLEASE READ BELOW!
-#### PLEASE DO NOT ASK FOR HELP FOR THIS VERSION OF CATS IN THE CATS DISCORD. THIS CATS IS NOT THE ORINGAL VERSION SO SUPPORT MAY NOT BE GIVEN IN THEIR DISCORD SERVER. IF YOU HAVE A BUG OR NEED HELP PLEASE START AN [ISSUE](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/issues) OR JOIN OUR [DISCORD](https://discord.catsblenderplugin.xyz) SERVER.
+**Toasters Blender Plugin** is a tool designed to shorten the steps needed to import, fix, and optimize 3D models for VRChat. Compatible formats/models include: MMD, XNALara, Mixamo, Source Engine, Unreal Engine, DAZ/Poser, Blender Rigify, Sims 2, Motion Builder, 3DS Max, and more.
 
-#### Struggling to find the correct version of Cats for your Blender version? Visit our website: https://catsblenderplugin.xyz/
+With Toasters Blender Plugin, uploading models into VRChat takes only a few minutes. All hours-long fixing processes are compressed into simple, streamlined functions!
 
-The unofficial version of Cats Blender Plugin, maintained by Team Neoneko. Cats is a tool designed to shorten steps needed to import and optimize models into VRChat. Compatible models are: MMD, XNALara, Mixamo, Source Engine, Unreal Engine, DAZ/Poser, Blender Rigify, Sims 2, Motion Builder, 3DS Max and potentially more.
+---
 
-With Cats it takes only a few minutes to upload your model into VRChat.
-All the hours-long processes of fixing your models are compressed into a few functions!
+## Links & Community
 
-- Join the unofficial Cats Discord: https://discord.neoneko.xyz/
-- Read the Wiki: https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki
+- **Discord Server:** [https://discord.gg/yTGVeQJytE](https://discord.gg/yTGVeQJytE)
+- **Website & Contact:** [https://magictwin.net/contact](https://magictwin.net/contact)
+- **Support:** [https://magictwin.net/toasters-blender-plugin?highlight=support](https://magictwin.net/toasters-blender-plugin?highlight=support)
+- **Patchnotes:** [https://magictwin.net/toasters-blender-plugin?highlight=patchnode](https://magictwin.net/toasters-blender-plugin?highlight=patchnode)
+- **GitHub Repository:** [https://github.com/magictwinsworld/Toasters-Blender-Plugin](https://github.com/magictwinsworld/Toasters-Blender-Plugin)
 
-You can find releases [here](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/releases), ensure you are using the one for your Blender version!
+*(Note: A new Wiki is currently in development and will be published soon!)*
 
-- You can find the development version for Blender 5.0 [here](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/tree/blender-5x-dev).  
+---
 
 ## Blender Version Support
 
-**Current Supported Version:** Blender 5.0+
+- **Supported Versions:** Blender 5.0, 5.1, 5.2.x (5.0+)
+- **Download Blender:** [blender.org](https://www.blender.org/download/)
 
-For detailed version support policies, see the [Version Support Wiki](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/Version-Support).
+---
 
-## Features
-
-Cats provides comprehensive tools for VRChat avatar creation:
+## Key Features
 
 - **Import/Export:** Optimized importing for MMD, VRM, FBX, Source Engine, and more
-- **Optimization:** Material combining, texture atlasing, bone merging
+- **Optimization:** Material combining, texture atlasing, bone merging, decimation
 - **Eye Tracking:** SDK3 and Legacy eye tracking setup
 - **Visemes:** Automatic lip sync configuration
 - **Custom Model Creation:** Merge armatures and attach meshes
-- **Translation Tools:** Convert Japanese names to English
-- **And much more!**
+- **Translation Tools:** Convert Japanese names to English automatically
 
-For complete feature documentation, visit the [Wiki](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki).
-
-
-## Requirements
-
-- **Blender 5.0 or above** (required for Cats 5.0+)
-- Download Blender from [blender.org](https://www.blender.org/download/)
-- If you have custom Python installed which Blender might use, you need to have NumPy installed
-
-**Important Notes:**
-- Windows Store Blender: No support provided due to known permission issues
-- We do not support Linux Package manager, snap store or the flatpack version of Blender.
-- Older Blender versions (4.x and below): No longer supported 
-
-### Optional Dependencies
-
-Some features require additional plugins:
-
-- **Material Combiner** (for texture atlasing): https://github.com/Grim-es/material-combiner-addon/
-- **Immersive Scaler** (for scaling tools): https://github.com/triazo/immersive_scaler
-
-See the [Installation Wiki](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/Installation#optional-dependencies) for details.
+---
 
 ## Installation
 
-1. Download the latest release from [Releases](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/releases)
-2. In Blender 5.0+, go to **Edit > Preferences > Extensions**
-3. Click **Install from Disk**
-4. Select the downloaded ZIP file (do not extract it)
-5. Enable the extension
-6. Restart Blender
+1. Download the latest release `.zip` package from [Releases](https://github.com/magictwinsworld/Toasters-Blender-Plugin/releases).
+2. In Blender 5.0+, go to **Edit > Preferences > Extensions** (or **Add-ons**).
+3. Click the menu icon in the top right and select **Install from Disk...**
+4. Select the downloaded `.zip` file (do not extract it).
+5. Enable the extension and restart Blender.
 
-For detailed installation instructions, see the [Installation Wiki](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/Installation).
+---
 
-## Help & Documentation
+## Credits & Acknowledgements
 
-For comprehensive documentation, visit the [Cats Wiki](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki):
+- **Maintained & Updated By:** **magictwin**
+- **Previous Maintainers:** Yusarina, 989onan, Team Neoneko
+- **Original Creators:** Hotox & GiveMeAllYourCats (Absolute Quantum)
 
-- [Quick Access Guide](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/Quick-Access)
-- [Optimization Tools](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/Optimization)
-- [Eye Tracking Setup](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/Eye-Tracking)
-- [Visemes Setup](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/Visemes)
-- [Troubleshooting](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/Troubleshooting)
-- [FAQ](https://github.com/teamneoneko/Cats-Blender-Plugin-Unofficial-/wiki/FAQ)
-
-## Acknowledgements
-
-Maintained by Team Neoneko (Yusarina).
-
-### Code Contributors:
-- Hotox
-- Shotariya
-- Neitri
-- Kiraver
-- Jordo
-- Ruubick
-- 989onan
-- rurre
-
-Cats Blender Plugin was originally developed by Absolute Quantum, then maintained by the community. [Click here](https://github.com/absolute-quantum/cats-blender-plugin) to see the original project (now abandoned).
-
-### Cats Uses the Following Plugins to Enhance Its Features:
-
- - [MMD Tools](https://github.com/UuuNyaa/blender_mmd_tools)
- - [Immersive Scaler](https://github.com/triazo/immersive_scaler)
- - [Material Combiner](https://github.com/Grim-es/material-combiner-addon)
-
-## Feedback
-
-Please open an issue if you need to leave feedback.
+*Toasters Blender Plugin integrates and builds upon MMD Tools, Immersive Scaler, and Material Combiner.*

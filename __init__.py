@@ -1,15 +1,10 @@
 # MIT License
 
-CATS_VERSION = "5.0.2.2"
+CATS_VERSION = "5.2.8.0"
 dev_branch = False
 
 import os
 import sys
-
-# Append files to sys path
-file_dir = os.path.join(os.path.dirname(__file__), 'extern_tools')
-if file_dir not in sys.path:
-    sys.path.append(file_dir)
 
 import shutil
 import pathlib
@@ -29,7 +24,7 @@ else:
 # Load or reload all cats modules
 if not is_reloading:
     # This order is important
-    import mmd_tools_local
+    from .extern_tools import mmd_tools_local
     if find_spec("imscale") and find_spec("imscale.immersive_scaler"):
         import imscale.immersive_scaler as imscale
     from . import updater
@@ -39,6 +34,7 @@ if not is_reloading:
 else:
     import importlib
     importlib.reload(updater)
+    from .extern_tools import mmd_tools_local
     importlib.reload(mmd_tools_local)
     if 'imscale' in vars():
         importlib.reload(imscale)
@@ -163,14 +159,14 @@ def remove_corrupted_files():
 
 
 def check_unsupported_blender_versions():
-    # Don't allow Blender versions older than 4.5
+    # Don't allow Blender versions older than 5.0
     if bpy.app.version < (5, 0):
         unregister()
         sys.tracebacklimit = 0
         raise ImportError(t('Main.error.29unsupportedVersion'))
      
-    # Don't allow 5.0+
-    if bpy.app.version >= (5, 1):
+    # Don't allow 5.3+
+    if bpy.app.version >= (5, 3):
         sys.tracebacklimit = 0
         raise ImportError(t('Main.error.40unsupportedVersion'))
 
@@ -194,7 +190,7 @@ def set_cats_version_string():
     return version_str
 
 def register():
-    print("\n### Loading CATS...")
+    print("\n### Loading Toasters...")
 
     # Check for unsupported Blender versions
     check_unsupported_blender_versions()
@@ -281,11 +277,11 @@ def register():
     # Apply the settings after a short time, because you can't change checkboxes during register process
     tools.settings.start_apply_settings_timer()
 
-    print("### Loaded CATS successfully!\n")
+    print("### Loaded Toasters successfully!\n")
 
 
 def unregister():
-    print("### Unloading CATS...")
+    print("### Unloading Toasters...")
 
     # Unregister updater
     updater.unregister()
@@ -332,10 +328,6 @@ def unregister():
     except AttributeError:
         print('shapekey button was not registered')
         pass
-
-    # Remove folder from sys path
-    if file_dir in sys.path:
-        sys.path.remove(file_dir)
 
     tools.settings.stop_apply_settings_threads()
 

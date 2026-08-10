@@ -19,7 +19,7 @@ from .translations import t
 mmd_tools_local_installed = False
 if platform.system() != "Linux":
     try:
-        from mmd_tools_local.operators import morph as Morph
+        from ..extern_tools.mmd_tools_local.operators import morph as Morph
         mmd_tools_local_installed = True
     except ImportError:
         pass

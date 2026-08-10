@@ -36,7 +36,7 @@ from .register import register_wrap
 from .translations import t
 from sys import intern
 
-from mmd_tools_local import utils
+from ..extern_tools.mmd_tools_local import utils
 
 def version_3_6_or_older():
     return bpy.app.version < (3, 7)

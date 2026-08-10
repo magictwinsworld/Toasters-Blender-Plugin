@@ -25,22 +25,17 @@ class CreditsPanel(ToolPanel, bpy.types.Panel):
         row.label(text=t('CreditsPanel.desc1') + globs.version_str + ')', 
                  icon_value=Iconloader.preview_collections["custom_icons"]["cats1"].icon_id)
 
+        formally_row = col.row(align=True)
+        formally_row.scale_y = 0.85
+        formally_row.label(text=t('CreditsPanel.formally'))
+
         col.separator()
 
-        # Current maintainers info
+        # Maintainers info
         info_col = col.column(align=True)
         info_col.scale_y = 0.85
         info_col.label(text=t('CreditsPanel.maintainers1'))
         info_col.label(text=t('CreditsPanel.maintainers2'))
-
-        col.separator()
-
-        # Contributors section
-        contrib_col = col.column(align=True)
-        contrib_col.scale_y = 0.85
-        contrib_col.label(text=t('CreditsPanel.desc4'))
-        contrib_col.label(text=t('CreditsPanel.descContributors'))
-        contrib_col.label(text=t('CreditsPanel.descContributors2'))
 
         col.separator()
 
