@@ -9,6 +9,7 @@ from .translations import t
 class ForumButton(bpy.types.Operator):
     bl_idname = 'cats_credits.forum'
     bl_label = t('ForumButton.label')
+    bl_description = t('ForumButton.desc')
     bl_options = {'REGISTER', 'UNDO', 'INTERNAL'}
 
     def execute(self, context):
@@ -22,6 +23,7 @@ class ForumButton(bpy.types.Operator):
 class HelpButton(bpy.types.Operator):
     bl_idname = 'cats_credits.help'
     bl_label = t('HelpButton.label')
+    bl_description = t('HelpButton.desc')
     bl_options = {'REGISTER', 'UNDO', 'INTERNAL'}
 
     def execute(self, context):
@@ -35,6 +37,7 @@ class HelpButton(bpy.types.Operator):
 class PatchnotesButton(bpy.types.Operator):
     bl_idname = 'cats_credits.patchnotes'
     bl_label = t('PatchnotesButton.label')
+    bl_description = t('PatchnotesButton.desc')
     bl_options = {'REGISTER', 'UNDO', 'INTERNAL'}
 
     def execute(self, context):
@@ -47,6 +50,7 @@ class PatchnotesButton(bpy.types.Operator):
 class SupportButton(bpy.types.Operator):
     bl_idname = 'cats_credits.support'
     bl_label = t('SupportButton.label')
+    bl_description = t('SupportButton.desc')
     bl_options = {'REGISTER', 'UNDO', 'INTERNAL'}
 
     def execute(self, context):
