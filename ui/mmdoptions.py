@@ -17,9 +17,11 @@ from ..tools.register import register_wrap
 from ..tools.translations import t
 
 @register_wrap
-class MMDOptions(ToolPanel, bpy.types.Panel):
+class MMDOptions(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_mmdoptions_stuff'
     bl_label = t('MMDOptions.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
@@ -66,7 +68,7 @@ class MMDOptions(ToolPanel, bpy.types.Panel):
         # Help section
         row = col.row(align=True)
         row.scale_y = 1.3
-        row.operator(MMDOptionswiki.bl_idname, icon_value=Iconloader.preview_collections["custom_icons"]["help1"].icon_id)
+        row.operator(MMDOptionswiki.bl_idname, icon_value=Iconloader.preview_collections["custom_icons"]["credits"].icon_id)
 
 @register_wrap
 class MMDOptionswiki(bpy.types.Operator):

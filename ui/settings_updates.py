@@ -10,9 +10,11 @@ from ..tools.register import register_wrap
 from ..tools.translations import t, DownloadTranslations
 
 @register_wrap
-class UpdaterPanel(ToolPanel, bpy.types.Panel):
+class UpdaterPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_updater_v3'
     bl_label = t('UpdaterPanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):

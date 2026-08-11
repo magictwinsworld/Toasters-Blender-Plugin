@@ -32,7 +32,6 @@ def load_other_icons():
     icons_dir = os.path.join(resources_dir, "icons")
     icons_other_dir = os.path.join(icons_dir, "other")
 
-    # load a preview thumbnail of a file and store in the previews collection
     pcoll.load('heart1', os.path.join(icons_other_dir, 'heart1.png'), 'IMAGE')
     pcoll.load('discord1', os.path.join(icons_other_dir, 'discord1.png'), 'IMAGE')
     pcoll.load('help1', os.path.join(icons_other_dir, 'help1.png'), 'IMAGE')
@@ -42,7 +41,15 @@ def load_other_icons():
     pcoll.load('mesh', os.path.join(icons_other_dir, 'mesh.png'), 'IMAGE')
     pcoll.load('UP_ARROW', os.path.join(icons_other_dir, 'blender_up_arrow.png'), 'IMAGE')
     pcoll.load('Resonite', os.path.join(icons_other_dir, 'rsn_logo128.png'), 'IMAGE')
-    # pcoll.load('TRANSLATE', os.path.join(icons_other_dir, 'translate.png'), 'IMAGE')
+
+    # Automatically load all PNG icons from resources/icons/menu
+    icons_menu_dir = os.path.join(icons_dir, "menu")
+    if os.path.exists(icons_menu_dir):
+        for file_name in os.listdir(icons_menu_dir):
+            if file_name.lower().endswith('.png'):
+                icon_key = os.path.splitext(file_name)[0]
+                icon_path = os.path.join(icons_menu_dir, file_name)
+                pcoll.load(icon_key, icon_path, 'IMAGE')
 
     preview_collections['custom_icons'] = pcoll
 

@@ -528,3 +528,19 @@ def register():
         description=t('Scene.debug_translations.desc'),
         default=False
     )
+
+    Scene.toasters_active_tab = StringProperty(
+        name="Toasters Active Tab",
+        default='CUSTOM'
+    )
+
+    Scene.toasters_opt_subtab = EnumProperty(
+        name="Optimization Mode",
+        description="Select optimization sub-category",
+        items=[
+            ('ATLAS', 'Atlas', 'Texture atlas and Material Combiner', 'TEXTURE', 0),
+            ('MATERIALS', 'Materials', 'Combine materials and mesh operations', 'MATERIAL', 1),
+            ('BONES', 'Bones', 'Bone merging tools', 'BONE_DATA', 2),
+        ],
+        default='ATLAS'
+    )

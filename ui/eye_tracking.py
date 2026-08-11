@@ -141,21 +141,25 @@ class SearchMenuOperatorShapekeyLowerLidRight(bpy.types.Operator):
         return {'FINISHED'}
 
 @register_wrap
-class EyeTrackingPanel(ToolPanel, bpy.types.Panel):
+class EyeTrackingPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_eye_tracking_v3'
     bl_label = t('EyeTrackingPanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
-        # Parent panel is now just a container for sub-panels
-        pass
+        col = self.layout.column(align=True)
+        from .main import draw_subpanel
+        draw_subpanel(SDK3EyeTrackingSubPanel, col, context)
 
 
 @register_wrap
-class SDK3EyeTrackingSubPanel(ToolPanel, bpy.types.Panel):
+class SDK3EyeTrackingSubPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_eye_tracking_sdk3_v3'
     bl_label = t('EyeTrackingPanel.sdk3.label')
-    bl_parent_id = 'VIEW3D_PT_eye_tracking_v3'
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = set()
 
     def draw(self, context):

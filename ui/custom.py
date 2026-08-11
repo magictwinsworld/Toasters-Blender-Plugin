@@ -101,26 +101,41 @@ class SearchMenuOperator_attach_mesh(bpy.types.Operator):
         return {'FINISHED'}
 
 @register_wrap
-class CustomPanel(ToolPanel, bpy.types.Panel):
+class CustomPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_custom_v3'
     bl_label = t('CustomPanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
-        layout = self.layout
-        col = layout.column(align=True)
+        col = self.layout.column(align=True)
+        from .main import draw_subpanel, draw_section_card
 
         # Tutorial button
         row = col.row(align=True)
         row.scale_y = 1.3
         row.operator(Armature_custom.CustomModelTutorialButton.bl_idname, icon='FORWARD')
 
+        col.separator()
+
+        # Merge Armatures Section Card
+        _, merge_box = draw_section_card(col, title=t('CustomPanel.armature.label'), icon='ARMATURE_DATA')
+        draw_subpanel(MergeArmatureSubPanel, merge_box, context)
+
+        col.separator()
+
+        # Attach Mesh Section Card
+        _, mesh_box = draw_section_card(col, title=t('CustomPanel.mesh.label'), icon='MESH_DATA')
+        draw_subpanel(AttachMeshSubPanel, mesh_box, context)
+
 
 @register_wrap
-class MergeArmatureSubPanel(ToolPanel, bpy.types.Panel):
+class MergeArmatureSubPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_custom_armature_v3'
     bl_label = t('CustomPanel.armature.label')
-    bl_parent_id = 'VIEW3D_PT_custom_v3'
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = set()
 
     def draw(self, context):
@@ -201,10 +216,11 @@ class MergeArmatureSubPanel(ToolPanel, bpy.types.Panel):
 
 
 @register_wrap
-class AttachMeshSubPanel(ToolPanel, bpy.types.Panel):
+class AttachMeshSubPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_custom_mesh_v3'
     bl_label = t('CustomPanel.mesh.label')
-    bl_parent_id = 'VIEW3D_PT_custom_v3'
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = set()
 
     def draw(self, context):

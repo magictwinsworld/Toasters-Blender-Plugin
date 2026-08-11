@@ -64,9 +64,11 @@ def check_for_imscale(force_refresh=False):
         draw_imscale_ui = None
 
 @register_wrap
-class ScalingPanel(ToolPanel, bpy.types.Panel):
+class ScalingPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_scale_v2'
     bl_label = t('ScalingPanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):

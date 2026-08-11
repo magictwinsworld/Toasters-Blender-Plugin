@@ -162,21 +162,45 @@ def check_for_smc(force_refresh=False):
         draw_smc_ui = None
 
 @register_wrap
-class OptimizePanel(ToolPanel, bpy.types.Panel):
+class OptimizePanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_optimize_v3'
     bl_label = t('OptimizePanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
-        # Parent panel is now just a container for sub-panels
-        pass
+        col = self.layout.column(align=True)
+        from .main import draw_subpanel, draw_section_card
+
+        # Sub-category selector buttons
+        row = col.row(align=True)
+        row.scale_y = 1.2
+        row.prop(context.scene, "toasters_opt_subtab", expand=True)
+
+        col.separator()
+
+        opt_mode = getattr(context.scene, 'toasters_opt_subtab', 'ATLAS')
+
+        if opt_mode == 'ATLAS':
+            _, atlas_box = draw_section_card(col, title=t('OptimizePanel.atlas.label'), icon='TEXTURE')
+            draw_subpanel(AtlasSubPanel, atlas_box, context)
+
+        elif opt_mode == 'MATERIALS':
+            _, mat_box = draw_section_card(col, title=t('OptimizePanel.material.label'), icon='MATERIAL')
+            draw_subpanel(MaterialSubPanel, mat_box, context)
+
+        elif opt_mode == 'BONES':
+            _, bone_box = draw_section_card(col, title=t('OptimizePanel.bonemerging.label'), icon='BONE_DATA')
+            draw_subpanel(BoneMergingSubPanel, bone_box, context)
 
 
 @register_wrap
-class AtlasSubPanel(ToolPanel, bpy.types.Panel):
+class AtlasSubPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_optimize_atlas_v3'
     bl_label = t('OptimizePanel.atlas.label')
-    bl_parent_id = 'VIEW3D_PT_optimize_v3'
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = set()
 
     def draw(self, context):
@@ -282,10 +306,11 @@ class AtlasSubPanel(ToolPanel, bpy.types.Panel):
 
 
 @register_wrap
-class MaterialSubPanel(ToolPanel, bpy.types.Panel):
+class MaterialSubPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_optimize_material_v3'
     bl_label = t('OptimizePanel.material.label')
-    bl_parent_id = 'VIEW3D_PT_optimize_v3'
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = set()
 
     def draw(self, context):
@@ -337,10 +362,11 @@ class MaterialSubPanel(ToolPanel, bpy.types.Panel):
 
 
 @register_wrap
-class BoneMergingSubPanel(ToolPanel, bpy.types.Panel):
+class BoneMergingSubPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_optimize_bonemerging_v3'
     bl_label = t('OptimizePanel.bonemerging.label')
-    bl_parent_id = 'VIEW3D_PT_optimize_v3'
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = set()
 
     def draw(self, context):

@@ -10,9 +10,11 @@ from ..tools.register import register_wrap
 from ..tools.translations import t
 
 @register_wrap
-class CreditsPanel(ToolPanel, bpy.types.Panel):
+class CreditsPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_credits_v3'
     bl_label = t('CreditsPanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
 
     def draw(self, context):
         layout = self.layout
@@ -52,7 +54,7 @@ class CreditsPanel(ToolPanel, bpy.types.Panel):
         help_row = actions_col.row(align=True)
         help_row.scale_y = 1.3
         help_row.operator(Credits.HelpButton.bl_idname, 
-                    icon_value=Iconloader.preview_collections["custom_icons"]["help1"].icon_id)
+                    icon_value=Iconloader.preview_collections["custom_icons"]["credits"].icon_id)
         
         support_row = actions_col.row(align=True)
         support_row.scale_y = 1.3

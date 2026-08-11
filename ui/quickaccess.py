@@ -17,9 +17,11 @@ from ..tools.translations import t
 
 
 @register_wrap
-class QuickAccessPanel(ToolPanel, bpy.types.Panel):
+class QuickAccessPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_quickaccess_v3'
     bl_label = t('QuickAccess.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
 
     def draw(self, context):
         layout = self.layout
@@ -63,35 +65,7 @@ class QuickAccessPanel(ToolPanel, bpy.types.Panel):
             row.scale_y = 1.0
             row.prop(context.scene, 'armature', icon='ARMATURE_DATA')
 
-        # Quick actions section
-        col.separator()
-        box = col.box()
-        quick_col = box.column(align=True)
-        
-        # Section header
-        header_row = quick_col.row(align=True)
-        header_row.scale_y = 0.75
-        header_row.label(text="Quick Actions", icon='SHADERFX')
-        
-        quick_col.separator()
-        
-        # Info text
-        draw_info_box(quick_col, [
-            t("FixLegacy.info1"),
-            t("FixLegacy.info2")
-        ])
 
-        quick_col.separator()
-
-        # Material and mesh buttons
-        row = quick_col.row(align=True)
-        row.scale_y = 1.3
-        row.operator(Material.CombineMaterialsButton.bl_idname, 
-                    text=t('QuickAccess.CombineMats.label'), 
-                    icon='MATERIAL')
-        row.operator(Armature_manual.JoinMeshes.bl_idname,
-                    text=t('QuickAccess.JoinMeshes.label'),
-                    icon_value=Iconloader.preview_collections["custom_icons"]["mesh"].icon_id)
 
         # Pose mode section
         col.separator()

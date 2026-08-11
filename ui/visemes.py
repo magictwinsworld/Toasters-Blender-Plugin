@@ -8,9 +8,11 @@ from ..tools.register import register_wrap
 from ..tools.translations import t
 
 @register_wrap
-class VisemePanel(ToolPanel, bpy.types.Panel):
+class VisemePanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_viseme_v3'
     bl_label = t('VisemePanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):

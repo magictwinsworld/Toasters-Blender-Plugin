@@ -14,9 +14,11 @@ from ..tools.translations import t
 
 
 @register_wrap
-class OtherOptionsPanel(ToolPanel, bpy.types.Panel):
+class OtherOptionsPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_OtherOptionsPanel_v3'
     bl_label = t('OtherOptionsPanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):

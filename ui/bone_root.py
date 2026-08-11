@@ -27,9 +27,11 @@ class SearchMenuOperator_root_bone(SearchMenuOperatorBase, bpy.types.Operator):
 
 
 @register_wrap
-class BoneRootPanel(ToolPanel, bpy.types.Panel):
+class BoneRootPanel(bpy.types.Panel):
     bl_idname = 'VIEW3D_PT_boneroot_v3'
     bl_label = t('BoneRootPanel.label')
+    bl_space_type = 'VIEW_3D'
+    bl_region_type = 'UI'
     bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):

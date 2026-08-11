@@ -988,6 +988,13 @@ def unregister():
             pass
 
     if hasattr(bpy.types.Scene, 'cats_updater_version_list'):
-        del bpy.types.Scene.cats_updater_version_list
+        try:
+            del bpy.types.Scene.cats_updater_version_list
+        except AttributeError:
+            pass
 
-        del bpy.types.Scene.cats_updater_version_list
+    if hasattr(bpy.types.Scene, 'cats_update_action'):
+        try:
+            del bpy.types.Scene.cats_update_action
+        except AttributeError:
+            pass
